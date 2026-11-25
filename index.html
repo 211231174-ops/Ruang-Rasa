@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7efe5">
+  <meta name="description" content="Ruang Rasa — Good Coffee, Better Mood. Nikmati kopi dan minuman non-kopi dalam suasana yang hangat.">
+  <title>Ruang Rasa — Kopi Enak, Suasana Lebih Baik</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #f7efe5;
+      --paper: #fffaf4;
+      --brown: #542817;
+      --brown2: #75452f;
+      --tan: #d8b99a;
+      --ink: #2e211b;
+      --muted: #79685d;
+      --line: rgba(84,40,23,.15);
+      --shadow: 0 24px 70px rgba(72,39,23,.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "DM Sans", sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(255,250,244,.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    nav { height: 78px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 11px; color: var(--brown); }
+    .brand-mark { width: 38px; height: 38px; border: 1.5px solid var(--brown); border-radius: 50%; display: grid; place-items: center; font-size: 20px; }
+    .brand-name { font: 700 23px "Playfair Display", serif; letter-spacing: -.6px; }
+    .brand-name small { display: block; font: 600 8px "DM Sans", sans-serif; letter-spacing: 2.2px; text-transform: lowercase; text-align: center; margin-top: -1px; }
+    .navlinks { display: flex; align-items: center; gap: 34px; font-size: 13px; color: #655247; }
+    .navlinks a:hover { color: var(--brown); }
+    .nav-cta, .button { background: var(--brown); color: #fffaf4; padding: 13px 21px; border-radius: 999px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; transition: .2s ease; }
+    .nav-cta:hover, .button:hover { background: #75452f; transform: translateY(-2px); }
+    .menu-toggle { display: none; border: 0; background: none; color: var(--brown); font-size: 25px; }
+    .hero { padding: 66px 0 82px; background: radial-gradient(circle at 80% 20%, #f0dfcd 0, transparent 34%), var(--cream); overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 62px; align-items: center; }
+    .eyebrow { color: var(--brown2); text-transform: uppercase; letter-spacing: 3px; font-size: 10px; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+    .eyebrow:before { content: ""; width: 30px; height: 1px; background: var(--brown2); }
+    h1 { font: 800 clamp(48px, 6vw, 76px)/1.02 "Playfair Display", serif; color: var(--brown); letter-spacing: -2.8px; margin: 23px 0 22px; }
+    h1 em { font-weight: 600; }
+    .hero-copy { max-width: 490px; color: var(--muted); line-height: 1.85; font-size: 15px; }
+    .hero-actions { display: flex; align-items: center; gap: 22px; margin-top: 31px; flex-wrap: wrap; }
+    .text-link { color: var(--brown); font-weight: 700; font-size: 13px; border-bottom: 1px solid var(--tan); padding-bottom: 5px; }
+    .hero-note { margin-top: 48px; display: flex; gap: 28px; }
+    .note { border-left: 1px solid var(--tan); padding-left: 13px; }
+    .note strong { display: block; color: var(--brown); font: 700 17px "Playfair Display", serif; }
+    .note span { color: var(--muted); font-size: 11px; }
+    .hero-visual { position: relative; }
+    .hero-visual:before { content: ""; position: absolute; inset: 7% -5% -5% 12%; border: 1px solid rgba(84,40,23,.2); border-radius: 48% 48% 18px 18px; transform: rotate(4deg); }
+    .hero-visual img { width: 100%; display: block; border-radius: 48% 48% 18px 18px; box-shadow: var(--shadow); position: relative; }
+    .floating-tag { position: absolute; left: -38px; bottom: 36px; background: var(--paper); border: 1px solid var(--line); box-shadow: var(--shadow); border-radius: 14px; padding: 15px 19px; color: var(--brown); font: 700 15px "Playfair Display", serif; transform: rotate(-4deg); }
+    .section { padding: 94px 0; }
+    .section-head { text-align: center; max-width: 620px; margin: 0 auto 48px; }
+    .section-head .eyebrow { justify-content: center; }
+    h2 { font: 700 clamp(34px, 4vw, 47px)/1.12 "Playfair Display", serif; color: var(--brown); margin: 16px 0; letter-spacing: -1px; }
+    .section-head p { color: var(--muted); line-height: 1.8; font-size: 14px; }
+    .about { display: grid; grid-template-columns: .9fr 1.1fr; gap: 75px; align-items: center; }
+    .about-image { position: relative; }
+    .about-image img { width: 100%; height: 470px; object-fit: cover; object-position: center 68%; border-radius: 180px 180px 18px 18px; }
+    .about-stamp { position: absolute; width: 112px; height: 112px; border-radius: 50%; background: var(--brown); color: var(--cream); display: grid; place-items: center; text-align: center; right: -28px; bottom: 32px; font: 600 13px/1.35 "Playfair Display", serif; transform: rotate(9deg); border: 5px solid var(--paper); }
+    .about-copy h2 { margin-top: 18px; }
+    .about-copy p { color: var(--muted); line-height: 1.9; font-size: 14px; }
+    .values { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 31px; }
+    .value { padding: 19px 16px; border: 1px solid var(--line); border-radius: 14px; background: #fffdf9; }
+    .value-icon { font-size: 22px; }
+    .value strong { display: block; color: var(--brown); font: 700 16px "Playfair Display", serif; margin: 10px 0 5px; }
+    .value span { color: var(--muted); font-size: 11px; line-height: 1.6; }
+    .menu-section { background: var(--cream); }
+    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .menu-card { background: var(--paper); border: 1px solid var(--line); padding: 34px; border-radius: 18px; min-height: 235px; position: relative; overflow: hidden; }
+    .menu-card:after { content: ""; position: absolute; width: 170px; height: 170px; border: 1px solid rgba(84,40,23,.12); border-radius: 50%; right: -55px; bottom: -70px; box-shadow: 0 0 0 18px rgba(84,40,23,.025), 0 0 0 36px rgba(84,40,23,.02); }
+    .menu-card .symbol { font-size: 29px; }
+    .menu-card h3 { font: 700 26px "Playfair Display", serif; color: var(--brown); margin: 19px 0 9px; }
+    .menu-card p { color: var(--muted); font-size: 13px; line-height: 1.8; max-width: 360px; margin: 0; }
+    .menu-card a { display: inline-block; margin-top: 23px; color: var(--brown); font-size: 12px; font-weight: 700; border-bottom: 1px solid var(--tan); padding-bottom: 4px; }
+    .poster-section { padding: 80px 0; }
+    .poster-panel { display: grid; grid-template-columns: 1fr .75fr; align-items: center; gap: 55px; background: var(--brown); color: var(--cream); border-radius: 24px; padding: 48px; overflow: hidden; }
+    .poster-panel h2 { color: var(--cream); font-size: clamp(34px,4vw,48px); }
+    .poster-panel p { color: #e6d3c1; line-height: 1.8; font-size: 14px; max-width: 440px; }
+    .poster-panel .button { background: var(--cream); color: var(--brown); margin-top: 16px; }
+    .poster-panel img { width: 100%; max-height: 440px; object-fit: cover; object-position: center; border-radius: 13px; box-shadow: 0 20px 45px rgba(0,0,0,.2); }
+    .closing { text-align: center; padding: 88px 24px 95px; background: #f1e2d2; }
+    .closing h2 { max-width: 650px; margin: 17px auto; }
+    .closing p { color: var(--muted); font-size: 14px; margin: 0 auto 27px; }
+    footer { background: #2f1b13; color: #f7efe5; padding: 38px 0; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    footer .brand { color: #f7efe5; }
+    footer .brand-mark { border-color: #e5cdb7; }
+    footer .brand-name small { color: #d8b99a; }
+    .footer-copy { color: #cdb8a7; font-size: 11px; }
+    .social { color: #f7efe5; font-size: 13px; font-weight: 600; }
+    @media (max-width: 800px) {
+      .wrap { width: min(100% - 36px, 600px); }
+      nav { height: 70px; }
+      .menu-toggle { display: block; }
+      .navlinks { display: none; position: absolute; top: 70px; left: 0; right: 0; padding: 22px; background: var(--paper); border-bottom: 1px solid var(--line); flex-direction: column; gap: 20px; }
+      .navlinks.open { display: flex; }
+      .nav-cta { display: none; }
+      .hero { padding: 48px 0 65px; }
+      .hero-grid, .about, .poster-panel { grid-template-columns: 1fr; gap: 38px; }
+      .hero-grid { gap: 48px; }
+      h1 { font-size: clamp(48px, 13vw, 68px); }
+      .hero-visual { width: 88%; margin: auto; }
+      .floating-tag { left: -18px; }
+      .section { padding: 70px 0; }
+      .about { gap: 38px; }
+      .about-image { width: 88%; }
+      .about-image img { height: 390px; }
+      .values { gap: 9px; }
+      .value { padding: 14px 11px; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .poster-panel { padding: 30px; }
+      .poster-panel img { max-height: 520px; object-position: center 65%; }
+      .footer-row { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 420px) {
+      .hero-note { gap: 15px; }
+      .note strong { font-size: 15px; }
+      .note span { font-size: 10px; }
+      .values { grid-template-columns: 1fr; }
+      .value { display: grid; grid-template-columns: 35px 1fr; column-gap: 10px; align-items: center; }
+      .value-icon { grid-row: span 2; }
+      .value strong { margin: 0 0 3px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav aria-label="Navigasi utama">
+      <a class="brand" href="#beranda" aria-label="Ruang Rasa beranda">
+        <span class="brand-mark">☕</span>
+        <span class="brand-name">Ruang Rasa<small>good coffee, better mood</small></span>
+      </a>
+      <button class="menu-toggle" aria-label="Buka navigasi" onclick="document.querySelector('.navlinks').classList.toggle('open')">☰</button>
+      <div class="navlinks">
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang">Tentang Kami</a>
+        <a href="#pilihan">Pilihan Menu</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+      <a class="nav-cta" href="https://www.instagram.com/ruangrasa.id/" target="_blank" rel="noopener">Temukan Kami ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="beranda">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Jeda kecil, hari lebih baik</div>
+        <h1>Good Coffee,<br><em>Better Mood.</em></h1>
+        <p class="hero-copy">Nikmati minuman kopi dan non-kopi dengan cita rasa yang menemani harimu. Temukan teman terbaik untuk beristirahat sejenak, berbagi cerita, dan menjalani aktivitas bersama Ruang Rasa.</p>
+        <div class="hero-actions">
+          <a class="button" href="#pilihan">Lihat Pilihan Menu Menu <span>→</span></a>
+          <a class="text-link" href="https://www.instagram.com/ruangrasa.id/" target="_blank" rel="noopener">Ikuti Instagram Kami</a>
+        </div>
+        <div class="hero-note">
+          <div class="note"><strong>Good Coffee</strong><span>Teman untuk harimu</span></div>
+          <div class="note"><strong>Better Mood</strong><span>Rasa yang memberi nyaman</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="assets/ruang-rasa-poster.jpeg" alt="Poster Ruang Rasa dengan sajian minuman kopi">
+        <div class="floating-tag">Temukan rasa<br>favoritmu ♡</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tentang">
+    <div class="wrap about">
+      <div class="about-image">
+        <img src="assets/ruang-rasa-poster.jpeg" alt="Sajian minuman Ruang Rasa">
+        <div class="about-stamp">Dibuat untuk<br>suasana hati<br>yang lebih baik</div>
+      </div>
+      <div class="about-copy">
+        <div class="eyebrow">Mengenal Ruang Rasa</div>
+        <h2>Lebih dari sekadar<br>secangkir minuman.</h2>
+        <p>Ruang Rasa hadir sebagai merek minuman kopi dan non-kopi untuk menemani keseharian. Dengan karakter yang hangat, santai, modern, dan ramah, Ruang Rasa ingin menghadirkan pengalaman menikmati minuman yang dekat dengan setiap momen.</p>
+        <p>Terkadang, menikmati minuman favorit sambil beristirahat sejenak bisa membuat harimu terasa lebih menyenangkan.</p>
+        <div class="values">
+          <div class="value"><div class="value-icon">✦</div><strong>Biji Kopi Pilihan Menu</strong><span>Mengutamakan kualitas dalam setiap sajian.</span></div>
+          <div class="value"><div class="value-icon">☕</div><strong>Rasa Premium</strong><span>Cita rasa nikmat yang berkesan.</span></div>
+          <div class="value"><div class="value-icon">☺</div><strong>Better Mood</strong><span>Teman untuk menemani keseharian.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section menu-section" id="pilihan">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Temukan Minuman Favoritmu</div>
+        <h2>Ada pilihan untuk setiap suasana.</h2>
+        <p>Mulai dari kopi untuk menemani waktu fokus hingga minuman non-kopi untuk saat bersantai. Pilih kategori yang paling sesuai dengan suasana hatimu.</p>
+      </div>
+      <div class="menu-grid">
+        <article class="menu-card">
+          <div class="symbol">☕</div>
+          <h3>Minuman Kopi</h3>
+          <p>Pilihan Menu untuk kamu yang menyukai karakter dan cita rasa kopi dalam setiap tegukan.</p>
+          <a href="https://www.instagram.com/ruangrasa.id/" target="_blank" rel="noopener">Lihat pilihan kopi ↗</a>
+        </article>
+        <article class="menu-card">
+          <div class="symbol">✧</div>
+          <h3>Minuman Non-Kopi</h3>
+          <p>Pilihan Menu minuman selain kopi untuk menemani waktu santai dan aktivitasmu.</p>
+          <a href="https://www.instagram.com/ruangrasa.id/" target="_blank" rel="noopener">Lihat pilihan non-kopi ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="poster-section">
+    <div class="wrap poster-panel">
+      <div>
+        <div class="eyebrow" style="color:#e4c6aa">Penyemangat harianmu</div>
+        <h2>Sediakan ruang untuk minuman yang kamu suka.</h2>
+        <p>Setiap hari punya ceritanya sendiri. Temukan minuman yang pas dan buat momen sederhana terasa lebih istimewa bersama Ruang Rasa.</p>
+        <a class="button" href="https://www.instagram.com/ruangrasa.id/" target="_blank" rel="noopener">Kunjungi Instagram Kami ↗</a>
+      </div>
+      <img src="assets/ruang-rasa-poster.jpeg" alt="Materi promosi Ruang Rasa">
+    </div>
+  </section>
+
+  <section class="closing" id="kontak">
+    <div class="eyebrow" style="justify-content:center">Tetap Terhubung</div>
+    <h2>Good Coffee, Better Mood.<br>Sampai jumpa di Ruang Rasa!</h2>
+    <p>Ikuti Instagram Kami untuk mengenal Ruang Rasa lebih dekat.</p>
+    <a class="button" href="https://www.instagram.com/ruangrasa.id/" target="_blank" rel="noopener">@ruangrasa.id ↗</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <a class="brand" href="#beranda">
+      <span class="brand-mark">☕</span>
+      <span class="brand-name">Ruang Rasa<small>good coffee, better mood</small></span>
+    </a>
+    <div class="footer-copy">© 2026 Ruang Rasa. Momen menyenangkan dimulai di sini.</div>
+    <a class="social" href="https://www.instagram.com/ruangrasa.id/" target="_blank" rel="noopener">Instagram ↗</a>
+  </div>
+</footer>
+<script>
+  document.querySelectorAll('.navlinks a').forEach(link => {
+    link.addEventListener('click', () => document.querySelector('.navlinks').classList.remove('open'));
+  });
+</script>
+</body>
+</html>
